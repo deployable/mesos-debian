@@ -1,0 +1,14 @@
+[Unit]
+Description=Mesos Agent
+Documentation=man:mesos-agent(8)
+
+[Service]
+EnvironmentFile=-/etc/default/mesos
+EnvironmentFile=-/etc/default/mesos-agent
+
+Type=simple
+ExecStart=/usr/local/sbin/mesos-agent --master=${MASTER} --work_dir=/var/lib/mesos
+#KillMode=process
+
+[Install]
+WantedBy=multi-user.target

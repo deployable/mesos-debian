@@ -1,0 +1,16 @@
+[Unit]
+Description=Mesos Master
+Documentation=man:mesos-master(8)
+
+[Service]
+EnvironmentFile=-/etc/default/mesos
+EnvironmentFile=-/etc/default/mesos-master
+
+Type=simple
+ExecStart=/usr/local/sbin/mesos-master --work_dir=/usr/local/var/mesos --ip=10.1.2.150 $EXTRA_OPTS
+#KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
